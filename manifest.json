@@ -1,0 +1,14 @@
+{
+  "name": "LearnBetter",
+  "description": "Increase productivity and identify issues faster by showing open github issues, and hiding distracting text",
+  "author": "Daniel Dawson"
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "icons": {},
+  "background": {
+    "scripts": [],
+    "persistent": false
+  },
+  "permissions": []
+}
