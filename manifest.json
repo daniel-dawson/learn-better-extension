@@ -9,7 +9,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://learn.co/tracks/*"
+        "https://learn.co/tracks/*/*"
       ],
       "js": [
         "contentScript.js"
