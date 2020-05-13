@@ -11,6 +11,9 @@
       "matches": [
         "https://learn.co/tracks/*/*"
       ],
+      "css": [
+        "styles.css"
+      ],
       "js": [
         "contentScript.js"
       ]
