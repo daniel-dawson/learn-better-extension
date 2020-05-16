@@ -20,7 +20,9 @@
     }
   ],
   "background": {
-    "scripts": [],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": false
   },
   "permissions": [],
