@@ -9,6 +9,14 @@ setTimeout(() => {
   if (friendsWidget !== null) friendsWidget.remove();
   const banner = document.getElementById("js--banner");
   if (banner !== null) banner.remove();
+
+  const container = document.createElement("div");
+
+  const workButton = `<button id="${cssPrefix}-btn">Work mode</button>`;
+  const dragElement = `<div id="${cssPrefix}-draggable"></div>`;
+
+  container.append(workButton, dragElement);
+  document.appendChild(container);
 }, 100);
 
 class Draggable {
