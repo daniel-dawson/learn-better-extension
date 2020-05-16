@@ -4,3 +4,7 @@
     --positive-color: #67a443,
     --negative-color: #F04A4F
 }
+
+button:focus {
+  outline: 0;
+}
