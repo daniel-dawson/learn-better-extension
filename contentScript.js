@@ -13,6 +13,28 @@ setTimeout(() => {
   const container = document.createElement("div");
 
   const workButton = `<button id="${cssPrefix}-btn">Work mode</button>`;
+  workButton.addEventListener("click", (e) => {
+    const main = document.getElementById("js--region-main");
+    const sideBar = document.getElementById("js--region-sidebar");
+    const subHeader = document.getElementById("js--site-subheader");
+    if (e.currentTarget.innerHTML === "Work mode") {
+      e.currentTarget.innerHTML = "Submit/AAQ";
+      const paddingEls = document.querySelectorAll(".level__inner");
+      for (const el of paddingEls) {
+        el.style.maxWidth = "1800px";
+      }
+      let banner = document.getElementById("js--banner");
+      if (banner !== null) banner.remove();
+      sideBar.style.display = "none";
+      main.style.right = "0";
+      subHeader.style.right = "0";
+    } else {
+      e.currentTarget.innerHTML = "Work mode";
+      sideBar.style.display = "block";
+      main.style.right = "263px";
+      subHeader.style.right = "263px";
+    }
+  });
   const dragElement = `<div id="${cssPrefix}-draggable"></div>`;
 
   container.append(workButton, dragElement);
