@@ -1,31 +1,39 @@
-"use strict";
-
-const cssPrefix = "learn-better--";
-
-const _gaq = _gaq || [];
-_gaq.push(["_setAccount", "UA-160250616-2"]);
-_gaq.push(["_trackPageview"]);
-
 (function () {
+  "use strict";
+  const cssPrefix = "learn-better--";
+
+  const _gaq = [];
+  _gaq.push(["_setAccount", "UA-160250616-2"]);
+  _gaq.push(["_trackPageview"]);
+
   const ga = document.createElement("script");
   ga.type = "text/javascript";
   ga.async = true;
   ga.src = "https://ssl.google-analytics.com/ga.js";
+
   const s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(ga, s);
-})();
-
-setTimeout(() => {
   const sgWidget = document.getElementById("js--region-sidebar-footer");
   if (sgWidget !== null) sgWidget.remove();
-  const friendsWidget = document.getElementById("js--region-sidebar");
+  const friendsWidget = document.querySelector(".site-widget");
   if (friendsWidget !== null) friendsWidget.remove();
   const banner = document.getElementById("js--banner");
   if (banner !== null) banner.remove();
-
   const container = document.createElement("div");
-
-  const workButton = `<button id="${cssPrefix}-btn">Work mode</button>`;
+  container.style.position = "absolute";
+  container.style.padding = "5px";
+  container.style.background = "#7A7DB7";
+  container.style.boxShadow = "0px 6px 4px -2px #ccc";
+  container.style.borderRadius = "7px";
+  container.style.top = "125px";
+  container.style.left = "42px";
+  container.style["z-index"] = "100";
+  const workButton = document.createElement("button");
+  workButton.id = `${cssPrefix}-btn`;
+  workButton.innerHTML = "Work mode";
+  workButton.style.borderRadius = "4px 0 0 4px";
+  workButton.style.height = "50px";
+  workButton.style.width = "100px";
   workButton.addEventListener("click", (e) => {
     const main = document.getElementById("js--region-main");
     const sideBar = document.getElementById("js--region-sidebar");
@@ -48,57 +56,14 @@ setTimeout(() => {
       subHeader.style.right = "263px";
     }
   });
-  const dragElement = `<div id="${cssPrefix}-draggable"></div>`;
-
+  const dragElement = document.createElement("div");
+  dragElement.style.background = "#00BCE1";
+  dragElement.style.float = "right";
+  dragElement.style.height = "50px";
+  dragElement.style.width = "20px";
+  dragElement.style.borderRadius = "0 4px 4px 0";
   container.append(workButton, dragElement);
-  document.appendChild(container);
-
+  document.body.appendChild(container);
   const draggable = new Draggable(dragElement);
-  draggable.initialize;
-}, 100);
-
-class Draggable {
-  constructor(el) {
-    this.element = el;
-  }
-
-  initialize() {
-    const el = this.element;
-    el.addEventListener("mouseenter", () => {
-      this.style.cursor = "grab";
-    });
-
-    el.addEventListener("mouseleave", () => {
-      this.style.cursor = "default";
-    });
-
-    el.addEventListener("mousedown", function (event) {
-      event.preventDefault();
-      let shiftX = event.clientX - this.getBoundingClientRect().left;
-      let shiftY = event.clientY - this.getBoundingClientRect().top;
-      let diffX =
-        this.getBoundingClientRect().left - div.getBoundingClientRect().left;
-      let diffY =
-        this.getBoundingClientRect().top - div.getBoundingClientRect().top;
-      this.style.cursor = "grabbing";
-      moveAt(event.pageX, event.pageY);
-
-      function moveAt(pageX, pageY) {
-        el.parentElement.style.left = pageX - shiftX - diffX + "px";
-        el.parentElement.style.top = pageY - shiftY - diffY + "px";
-      }
-
-      function onMouseMove(e) {
-        moveAt(e.pageX, e.pageY);
-      }
-
-      document.addEventListener("mousemove", onMouseMove);
-
-      drag.addEventListener("mouseup", function (e) {
-        e.preventDefault();
-        this.style.cursor = "grab";
-        document.removeEventListener("mousemove", onMouseMove);
-      });
-    });
-  }
-}
+  draggable.initialize();
+})();
