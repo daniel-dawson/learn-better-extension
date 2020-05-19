@@ -1,6 +1,6 @@
 {
-  "name": "LearnBetter",
-  "description": "Increase productivity and identify issues faster by showing open github issues, and hiding distracting text",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
   "author": "Daniel Dawson",
   "version": "0.0.1",
   "manifest_version": 2,
@@ -15,6 +15,7 @@
         "styles.css"
       ],
       "js": [
+        "draggable.js",
         "contentScript.js"
       ]
     }

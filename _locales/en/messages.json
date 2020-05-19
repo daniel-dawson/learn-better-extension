@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Learn Better",
+    "description": "The title of the extension"
+  },
+  "appDesc": {
+    "message": "Increase productivity and identify issues faster by showing open github issues, and hiding distracting text",
+    "description": "The description of the extension"
+  }
+}
