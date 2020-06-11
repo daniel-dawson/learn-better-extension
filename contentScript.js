@@ -2,12 +2,15 @@
   "use strict";
   const cssPrefix = "learn-better--";
 
+  // hide initial content deemed always unnecessary
   const sgWidget = document.getElementById("js--region-sidebar-footer");
   if (sgWidget !== null) sgWidget.remove();
   const friendsWidget = document.querySelector(".site-widget");
   if (friendsWidget !== null) friendsWidget.remove();
   const banner = document.getElementById("js--banner");
   if (banner !== null) banner.remove();
+
+  // create container for main part of extension
   const container = document.createElement("div");
   container.style.position = "absolute";
   container.style.padding = "5px";
@@ -17,6 +20,8 @@
   container.style.top = "125px";
   container.style.left = "42px";
   container.style["z-index"] = "100";
+
+  // button to change modes
   const workButton = document.createElement("button");
   workButton.id = `${cssPrefix}-btn`;
   workButton.innerHTML = "Work mode";
@@ -45,6 +50,13 @@
       subHeader.style.right = "263px";
     }
   });
+
+  // add dropdown to container
+  const dropdown = document.createElement("div");
+  dropdown.id = `${cssPrefix}-dropdown`;
+
+  // add draggable element
+  // TODO: make a different icon for better UX
   const dragElement = document.createElement("div");
   dragElement.style.background = "#00BCE1";
   dragElement.style.float = "right";
@@ -55,6 +67,4 @@
   document.body.appendChild(container);
   const draggable = new Draggable(dragElement);
   draggable.initialize();
-
-  chrome.runtime.sendMessage({ action: "extensionLoaded" });
 })();
